@@ -1,5 +1,5 @@
 import aws_cdk.cdk as cdk
-import aws_cdk.core as core
+import aws_cdk as core
 import aws_cdk.aws_events_targets as targets
 import aws_cdk.aws_lambda as serverless
 import aws_cdk.aws_events as events
@@ -13,8 +13,9 @@ import json
 
 #USER VARIABLES
 prefix = 'sagecdk'
-my_region = boto3.session.Session().region_name
-account_id = boto3.client('sts').get_caller_identity().get('Account')
+my_region = boto3.session.Session(profile_name="sandbox-jrusso-test").region_name
+#my_acc_id = boto3.client('sts').get_caller_identity().get('Account')
+my_acc_id = "141388277701"
 
 class AutoModelDeploy(core.Stack):
     def __init__(self, app: core.App, id: str) -> None:
