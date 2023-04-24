@@ -1,12 +1,13 @@
 from aws_cdk import aws_events as events, aws_lambda as lambda_, cdk, aws_events_targets as targets
-from aws_cdk import aws_iam, core
+from aws_cdk import aws_iam
 from aws_cdk import aws_apigateway as apig_
+import aws_cdk as core
 import boto3 
 
-my_region = boto3.session.Session().region_name
+my_region = boto3.session.Session(profile_name="sandbox-jrusso-test").region_name
 endpoint_name = "vehicle-damage-inspection-endpoint"
-my_acc_id = boto3.client('sts').get_caller_identity().get('Account')
-
+#my_acc_id = boto3.client('sts').get_caller_identity().get('Account')
+my_acc_id = "141388277701"
 class APILambdaSagemaker(core.Stack):
     def __init__(self, app: core.App, id: str) -> None:
         super().__init__(app, id)
